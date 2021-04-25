@@ -1,2 +1,5 @@
 dist
 *.tar
+
+dist-newstyle
+.ghc.environment.*

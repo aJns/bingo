@@ -1,17 +1,18 @@
 FROM haskell:8
 
+EXPOSE 3000
+
 WORKDIR /opt/bingo
 
-RUN cabal update
+RUN cabal new-update
 
-# Add just the .cabal file to capture dependencies
 COPY . /opt/bingo
 
 # Docker will cache this command as a layer, freeing us up to
 # modify source code without re-installing dependencies
 # (unless the .cabal file changes!)
-RUN cabal install --only-dependencies -j
+RUN cabal new-install --only-dependencies -j
 
-RUN cabal install --overwrite-policy=always -j
+RUN cabal new-install --overwrite-policy=always -j
 
 CMD ["bingo"]
