@@ -17,7 +17,7 @@ bingoRootHTML = HTML.html $
     HTML.body $ do
       HTML.div ! HTML.id "content" $ do
         HTML.p $ "bingosanat, rivinvaihdolla eroteltuna"
-        HTML.form ! HTML.action "" ! HTML.method "get" $ do 
+        HTML.form ! HTML.action "/start" ! HTML.method "get" $ do 
           HTML.textarea ! HTML.name "sanat" $ HTML.text $ "Darcy itkee"
           HTML.p $ HTML.button $ "hit it!"
 
