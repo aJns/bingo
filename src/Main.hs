@@ -1,8 +1,16 @@
 {-# LANGUAGE OverloadedStrings #-}
-import Web.Scotty
 
-import Data.Monoid (mconcat)
+import Web.Spock as Spock
+import Web.Spock.Config as Spock
+import Data.Aeson as A
 
-main = scotty 3000 $ do
-    get "/" $ file "./static/index.html"
-    get "/bingo.jpg" $ file "./static/bingo.jpg"
+import Html
+
+main :: IO ()
+main = do
+  spockCfg <- defaultSpockCfg () PCNoDatabase ()
+  runSpock 3000 $ spock spockCfg $ do
+    get root $ do
+      Spock.lazyBytes bingoRootBytes
+    get (root <//> var) $ \myInput ->
+      Spock.html myInput
