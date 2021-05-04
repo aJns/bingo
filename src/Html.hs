@@ -37,9 +37,17 @@ cardHTML cardMap = HTML.docTypeHtml $ do
       HTML.div ! HTML.id "content" $ do
         HTML.table $ do
             HTML.tbody $ do
-                HTML.tr $ do
-                  HTML.td $ HTML.string $ fromJust $ lookup (1,1) cardMap
-                  HTML.td $ HTML.string $ fromJust $ lookup (1,2) cardMap
-                HTML.tr $ do
-                  HTML.td $ HTML.string $ fromJust $ lookup (1,3) cardMap
-                  HTML.td $ HTML.string $ fromJust $ lookup (1,4) cardMap
+                tableRow 1 cardMap
+                tableRow 2 cardMap
+                tableRow 3 cardMap
+                tableRow 4 cardMap
+                tableRow 5 cardMap
+
+tableRow row cardMap = HTML.tr $ do
+    HTML.td $ HTML.string $ fromJust $ lookup (row,1) cardMap
+    HTML.td $ HTML.string $ fromJust $ lookup (row,2) cardMap
+    HTML.td $ HTML.string $ fromJust $ lookup (row,3) cardMap
+    HTML.td $ HTML.string $ fromJust $ lookup (row,4) cardMap
+    HTML.td $ HTML.string $ fromJust $ lookup (row,5) cardMap
+
+
