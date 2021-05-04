@@ -30,7 +30,8 @@ executable bingo
     random,
     random-shuffle,
     text,
-    time
+    time,
+    wai-middleware-static
 			
   hs-source-dirs:      src
   default-language:    Haskell2010

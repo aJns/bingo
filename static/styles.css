@@ -1,0 +1,15 @@
+table {
+  table-layout: fixed;
+  width: 750px;
+  height: 750px;
+  text-align: center;
+  border-collapse: collapse;
+  border: 3px solid purple;
+}
+table td {
+  border: 3px solid purple;
+}
+table tr {
+  border: 3px solid purple;
+}
+
