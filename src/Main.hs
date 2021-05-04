@@ -18,9 +18,9 @@ main = do
   runSpock 3000 $ spock spockCfg $ do
     middleware $ staticPolicy (addBase "static")
     get root $ do
-      Spock.lazyBytes bingoRootBytes
+      Spock.lazyBytes $ renderHTML bingoRootHTML
     get (root <//> "start") $ do
       sanat <- Spock.param' "sanat"
       sekotetut <- liftIO $ shuffleWords $ lines sanat
       let kortti = bingoFromList sekotetut
-      Spock.lazyBytes $ cardBytes kortti
+      Spock.lazyBytes $ renderHTML $ cardHTML kortti
