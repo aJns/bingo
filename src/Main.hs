@@ -1,12 +1,15 @@
 {-# LANGUAGE OverloadedStrings #-}
 
+import Control.Monad.IO.Class (liftIO)
+import Data.Aeson as A
+import Data.List
+import Data.Text hiding (head, lines, intercalate)
 import Web.Spock as Spock hiding (head)
 import Web.Spock.Config as Spock
-import Data.Aeson as A
-import Data.Text hiding (head, lines, intercalate)
-import Data.List
 
 import Html
+import Bingo
+import Util
 
 main :: IO ()
 main = do
@@ -16,4 +19,6 @@ main = do
       Spock.lazyBytes bingoRootBytes
     get (root <//> "start") $ do
       sanat <- Spock.param' "sanat"
-      Spock.html $ pack $ intercalate " -- " $ lines sanat
+      sekotetut <- liftIO $ shuffleWords $ lines sanat
+      let kortti = bingoFromList sekotetut
+      Spock.lazyBytes $ cardBytes kortti
