@@ -43,6 +43,7 @@ cardHTML cardMap = HTML.docTypeHtml $ do
                 tableRow 4 cardMap
                 tableRow 5 cardMap
 
+tableRow :: Integer -> Map (Integer, Integer) String -> HTML.Html
 tableRow row cardMap = HTML.tr $ do
     HTML.td $ HTML.string $ fromJust $ lookup (row,1) cardMap
     HTML.td $ HTML.string $ fromJust $ lookup (row,2) cardMap
