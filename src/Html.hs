@@ -20,6 +20,7 @@ bingoRootHTML = HTML.docTypeHtml $ do
       HTML.title "Bingoooooooooooooooo"
       HTML.meta ! HTML.charset "utf-8"
       link ! rel "stylesheet" ! href "styles.css"
+      script ! type_ "text/javascript" ! src "home.js" $ mempty
     HTML.body $ do
       HTML.div ! HTML.id "content" $ do
         HTML.p $ "bingosanat, rivinvaihdolla eroteltuna"
@@ -33,6 +34,7 @@ cardHTML cardMap = HTML.docTypeHtml $ do
       HTML.title "Bingoooooooooooooooo"
       HTML.meta ! HTML.charset "utf-8"
       link ! rel "stylesheet" ! href "styles.css"
+      script ! type_ "text/javascript" ! src "start.js" $ mempty
     HTML.body $ do
       HTML.div ! HTML.id "content" $ do
         HTML.table $ do
